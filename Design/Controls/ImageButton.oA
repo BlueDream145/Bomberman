@@ -1,0 +1,9 @@
+ImageButton {
+    property pressedSource: ""
+    property hoveredSource: ""
+    property defaultSource: ""
+
+    source: pressed ? pressedSource : hovered ? hoveredSource : defaultSource
+    font: width > 350 ? "Resources/Fonts/font30.xml" : "Resources/Fonts/font14.xml"
+    center: true
+}

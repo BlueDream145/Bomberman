@@ -1,0 +1,47 @@
+GameScreen {
+    property pauseText: "Press 'P' to resume"
+
+    id: game
+    relativeSize: 1, 1
+
+    PlayerStatus {
+        id: player1
+        relativePos: 0.1, 0.05
+        lives: game.playerHP1
+        color: "red"
+        icon: "Resources/Menus/player1.png"
+    }
+
+    PlayerStatus {
+        id: player2
+        relativePos: 0.9, 0.05
+        lives: game.playerHP2
+        color: "green"
+        icon: "Resources/Menus/player2.png"
+    }
+
+    PlayerStatus {
+        id: player3
+        visible: !game.twoSpawn
+        relativePos: 0.1, 0.95
+        lives: game.playerHP3
+        color: "blue"
+        icon: "Resources/Menus/player3.png"
+    }
+
+    PlayerStatus {
+        id: player4
+        visible: !game.twoSpawn
+        relativePos: 0.9, 0.95
+        lives: game.playerHP4
+        color: "orange"
+        icon: "Resources/Menus/player4.png"
+    }
+
+    Title {
+        relativePos: 0.5, 0.5
+        relativeSize: 1, 1
+        text: parent.pauseText
+        visible: parent.end
+    }
+}

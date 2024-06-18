@@ -1,0 +1,19 @@
+Rectangle {
+    property icon: ""
+    property lives: 0
+
+    relativeSize: 0.2, 0.1
+
+    Image {
+        relativeSize: 0.5, 1
+        source: parent.icon
+    }
+
+    Text {
+        fontColor: "white"
+        text: parent.lives
+        relativeSize: 0.5, 1
+        x: parent.width - width
+        font: "Resources/Fonts/font22.xml"
+    }
+}

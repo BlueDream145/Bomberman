@@ -1,0 +1,139 @@
+import Controls
+
+Item {
+    MapView {
+        id: view
+        secondConfig: chunkGen.state
+        twoSpawn: spawns.state
+        special: special.state
+        seed: seedIn.text
+        visible: parent.visible
+        preview: true
+
+        on gameover {
+            generate()
+        }
+
+        on show {
+            generate()
+        }
+
+        on hide {
+            end = true
+        }
+    }
+
+    Button {
+        id: play
+        text: "Play"
+        relativeSize: 0.15, 0.1
+        x: seedIn.x + seedIn.width
+        y: seedIn.y
+
+        on released {
+            gameMenu.secondConfig = view.secondConfig
+            gameMenu.twoSpawn = view.twoSpawn
+            gameMenu.special = view.special
+            gameMenu.seed = view.seed
+            gameMenu.size = view.size
+            gameMenu.generate()
+            gameMenu.end = false
+            menus.index = menus.game
+        }
+    }
+
+    TextInput {
+        id: seedIn
+        relativeSize: 0.3, 0.1
+        x: (parent.width / 2) - (width - play.width / 2)
+        y: parent.height * 0.05
+        maxLength: 8
+        text: "Seed"
+
+        on text {
+            view.generate()
+        }
+    }
+
+    MapSwitch {
+        id: chunkGen
+        relativePos: 0.15, 0.4
+        titleText: "Chunks"
+        activeSrc: "Resources/Menus/MapEditor/mirror.png"
+        passiveSrc: "Resources/Menus/MapEditor/rotation.png"
+        pressedSrc: "Resources/Menus/MapEditor/chunk_pressed.png"
+        hoveredSrc: "Resources/Menus/MapEditor/chunk_hovered.png"
+
+        on state {
+            view.generate()
+        }
+    }
+
+    MapSwitch {
+        id: spawns
+        relativePos: 0.15, 0.6
+        titleText: "Spawns"
+        activeSrc: "Resources/Menus/MapEditor/spawn2.png"
+        passiveSrc: "Resources/Menus/MapEditor/spawn4.png"
+        pressedSrc: "Resources/Menus/MapEditor/spawn_pressed.png"
+        hoveredSrc: "Resources/Menus/MapEditor/spawn_hovered.png"
+
+        on state {
+            view.generate()
+        }
+    }
+
+    ImageButton {
+        id: plus
+        pressedSource: "Resources/Menus/MapEditor/plus_pressed.png"
+        hoveredSource: "Resources/Menus/MapEditor/plus_hovered.png"
+        defaultSource: "Resources/Menus/MapEditor/plus.png"
+        relativePos: 0.85, 0.65
+        relativeSize: 0.07, 0.1
+
+        on released {
+            view.size += 4
+            view.generate()
+        }
+    }
+
+    ImageButton {
+        id: less
+        pressedSource: "Resources/Menus/MapEditor/less_pressed.png"
+        hoveredSource: "Resources/Menus/MapEditor/less_hovered.png"
+        defaultSource: "Resources/Menus/MapEditor/less.png"
+        relativePos: 0.85, 0.75
+        relativeSize: 0.07, 0.1
+
+        on released {
+            view.size -= 4
+            view.generate()
+        }
+    }
+
+    ImageButton {
+        property state: false
+
+        id: special
+        relativePos: 0.85, 0.4
+        relativeSize: 0.1, 0.15
+        source: state ? "Resources/Menus/MapEditor/special_pressed.png" : "Resources/Menus/MapEditor/special.png"
+
+        on released {
+            state = !state
+            view.generate()
+        }
+    }
+
+    Button {
+        id: exit
+        text: "Back"
+        relativePos: 0.1, 0.95
+        relativeSize: 0.2, 0.1
+        transparency: 0.4
+
+        on released {
+            menus.index = menus.launch
+        }
+    }
+}

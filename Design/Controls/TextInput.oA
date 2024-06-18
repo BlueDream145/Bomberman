@@ -1,0 +1,18 @@
+TextInput {
+    property titleText: ""
+    font: "Resources/Fonts/font14.xml"
+    center: true
+    color: "grey"
+    fontColor: "white"
+
+    Image {
+        source: "Resources/Menus/border.png"
+        relativeSize: 1, 1
+    }
+
+    Text {
+        relativeSize: 1, 0.5
+        y: 0 - height
+        text: parent.titleText
+    }
+}

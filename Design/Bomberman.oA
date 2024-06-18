@@ -1,0 +1,61 @@
+/*
+    Bomberman main window
+*/
+
+Window {
+    id: mainWnd
+    color: "grey"
+    resizable: true
+
+    Image {
+        relativeSize: 1, 1
+        source: "Resources/Menus/background.png"
+    }
+
+    GameSound {
+        id: sounds
+    }
+
+    MenuHandler {
+        property main: 0
+        property game: 1
+        property map: 2
+        property players: 3
+        property launch: 4
+        property gameover: 5
+
+        id: menus
+        relativeSize: 1, 1
+
+
+        MainMenu {
+            id: mainMenu
+            relativeSize: 1, 1
+        }
+
+        GameMenu {
+            id: gameMenu
+            relativeSize: 1, 1
+        }
+
+        MapMenu {
+            id: mapMenu
+            relativeSize: 1, 1
+        }
+
+        PlayersMenu {
+            id: playersMenu
+            relativeSize: 1, 1
+        }
+
+        LaunchMenu {
+            id: launchMenu
+            relativeSize: 1, 1
+        }
+
+        GameOverMenu {
+            id: gameoverMenu
+            relativeSize: 1, 1
+        }
+    }
+}

@@ -1,0 +1,31 @@
+import Controls
+
+GameView {
+    id: view
+    end: false
+    pauseText: "Reloading game.."
+
+    on gameover {
+        generate()
+    }
+
+    on show {
+        generate()
+    }
+
+    on hide {
+        end = true
+    }
+
+    Button {
+        id: playBtn
+        text: "Play"
+        relativePos: 0.5, 0.1
+        relativeSize: 0.3, 0.15
+        transparency: 0.4
+
+        on released {
+            menus.index = menus.players;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+import Controls
+
+Item {
+
+    Title {
+        text: "Launch"
+    }
+
+    Image {
+        id: launchMenu
+        relativeSize: 1, 1
+        source: "Resources/Menus/MainMenu.png"
+
+        Button {
+            id: quickBtn
+            text: "Quick Play"
+            relativePos: 0.2, 0.3
+            relativeSize: 0.37, 0.15
+            transparency: 0.4
+
+            on released {
+                gameMenu.seed = ""
+                gameMenu.generate()
+                menus.index = menus.game
+            }
+        }
+
+        Button {
+            id: customizeBtn
+            text: "Custom"
+            relativePos: 0.2, 0.5
+            relativeSize: 0.37, 0.15
+            transparency: 0.4
+
+            on released {
+                menus.index = menus.map
+            }
+        }
+
+        Button {
+            id: loadGameBtn
+            text: "Load Game"
+            relativePos: 0.2, 0.7
+            relativeSize: 0.37, 0.15
+            transparency: 0.4
+
+            on released {
+                gameMenu.loadMap = true
+                menus.index = menus.game
+            }
+        }
+    }
+
+    Button {
+        id: exit
+        text: "Back"
+        relativePos: 0.1, 0.95
+        relativeSize: 0.2, 0.1
+        transparency: 0.4
+
+        on released {
+            menus.index = menus.players
+        }
+    }
+}

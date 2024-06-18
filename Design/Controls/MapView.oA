@@ -1,0 +1,3 @@
+GameScreen {
+    relativeSize: 1, 1
+}

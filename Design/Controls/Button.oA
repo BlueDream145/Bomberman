@@ -1,0 +1,13 @@
+Button {
+    property pressedColor: "lightblue"
+    property hoveredColor: "lightgrey"
+    property defaultColor: "darkgrey"
+
+    color: pressed ? pressedColor : hovered ? hoveredColor : defaultColor
+    font: width > 350 ? "Resources/Fonts/font30.xml" : "Resources/Fonts/font14.xml"
+    center: true
+
+    on released {
+        sounds.click()
+    }
+}

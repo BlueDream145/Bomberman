@@ -1,0 +1,21 @@
+ImageButton {
+    property titleText: ""
+    property activeSrc: ""
+    property passiveSrc: ""
+    property pressedSrc: ""
+    property hoveredSrc: ""
+    property state: false
+
+    source: pressed ? pressedSrc : (hovered ? hoveredSrc : (state ? activeSrc : passiveSrc))
+    relativeSize: 0.07, 0.1
+
+    on released {
+        state = !state
+    }
+
+    Text {
+        relativeSize: 1, 0.5
+        y: 0 - height
+        text: parent.titleText
+    }
+}

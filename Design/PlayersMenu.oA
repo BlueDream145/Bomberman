@@ -1,0 +1,52 @@
+import Controls
+
+Item {
+
+    Title {
+        text: "Players"
+    }
+
+    Image {
+        id: playersMenu
+        relativeSize: 1, 1
+        source: "Resources/Menus/MainMenu.png"
+    }
+
+    Button {
+        id: onePlayerBtn
+        text: "1 player"
+        relativePos: 0.2, 0.3
+        relativeSize: 0.33, 0.15
+        transparency: 0.4
+
+        on released {
+            gameMenu.playerCount = 1
+            menus.index = menus.launch
+        }
+    }
+
+    Button {
+        id: twoPlayersBtn
+        text: "2 players"
+        relativePos: 0.2, 0.5
+        relativeSize: 0.33, 0.15
+        transparency: 0.4
+
+        on released {
+            gameMenu.playerCount = 2
+            menus.index = menus.launch
+        }
+    }
+
+    Button {
+        id: exit
+        text: "Back"
+        relativePos: 0.1, 0.95
+        relativeSize: 0.2, 0.1
+        transparency: 0.4
+
+        on released {
+            menus.index = menus.main
+        }
+    }
+}

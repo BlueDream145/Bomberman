@@ -1,0 +1,30 @@
+import Controls
+
+GameView {
+
+    on gameover {
+        menus.index = menus.gameover
+    }
+
+    on show {
+        sounds.game()
+    }
+
+    on hide {
+        sounds.menu()
+    }
+
+    Button {
+        id: quitGame
+        relativePos: 0.5, 0.05
+        relativeSize: 0.2, 0.1
+        text: "Save"
+        transparency: 0.4
+
+        on released {
+            parent.saveMap()
+            parent.end = true
+            menus.index = menus.launch
+        }
+    }
+}

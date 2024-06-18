@@ -1,0 +1,4 @@
+Text {
+    relativeSize: 1, 0.2
+    font: width > 800 ? "Resources/Fonts/font42.xml" : "Resources/Fonts/font26.xml"
+}
